@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="{% static 'css/base.css' %}">
+      <title>Гелиос - онлайн магазин строительных товаров</title>
+      <link rel="icon" href="{% static 'media/base/icon.jpg' %}">
+
+        <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <main>
+      <div id="header-top">
+          <a href="#" id="city">Москва</a>
+          <div id="header-top-right">
+              <p>+7(906)911-66-29</p>
+              <p>г.&nbspМосква&nbspул.&nbspАкадемика&nbspМиллионщикова,&nbspдом&nbsp17,&nbspпом.&nbsp1&nbspофис.№&nbsp3</p>
+              <p>с 10:00 до 18:00</p>
+          </div>
+      </div>
+
+      <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        <div id="main-nav-container">
+          <a class="navbar-brand" href="/">
+            <img src="/static/media/base/icon.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+            Гелиос
+          </a>
+
+          <div class="collapse navbar-collapse" id="navbarcontent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Категории
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'category' 'Пиломатериалы' %}">Пиломатериалы</a>
+                  <a class="dropdown-item" href="{% url 'category' 'Столярные_изделия' %}">Столярные изделия</a>
+                  <a class="dropdown-item" href="{% url 'category' 'ОСП' %}">ОСП</a>
+                  <a class="dropdown-item" href="{% url 'category' 'ДВП' %}">ДВП</a>
+                  <a class="dropdown-item" href="{% url 'category' 'Фанера' %}">Фанера</a>
+                  <a class="dropdown-item" href="{% url 'category' 'Евровагонка' %}">Евровагонка</a>
+                  <a class="dropdown-item" href="{% url 'category' 'Подоконники' %}">Подоконники</a>
+                  <a class="dropdown-item" href="{% url 'category' 'Щиты' %}">Щиты</a>
+                  <a class="dropdown-item" href="{% url 'category' 'Лестницы' %}">Лестницы</a>
+                  <a class="dropdown-item" href="{% url 'category' 'Имитация_бруса' %}">Имитация бруса</a>
+                  <a class="dropdown-item" href="{% url 'category' 'Погонажные_изделия' %}">Погонажные изделия</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#">Избранное</a>
+              </li>
+            </ul>
+            <button id="order-butt" type="button" class="btn btn-outline-secondary" href="#">Корзина</button>
+            <form id="search-form">
+              <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Поиск</button>
+            </form>
+            <div id="auth-container">
+              <button type="button" class="btn btn-outline-success">Вход</button>
+              <button type="button" class="btn btn-outline-success">Регистрация</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+      {{ cat_list }}
+
+      <div id="top-banner-cont">
+        <img src="{% static 'media/main/banner.bmp' %}" id="top-banner">
+      </div>
+
+      {% block content %}
+      {% endblock %}
+
+      <footer class="bg-dark">
+        <div class="vacuum"></div>
+        <div id="foot-cont">
+        <div id="footer-number">
+          <div id="footer-number-first">Телефон:</div>
+          <div id="footer-number-second">+7(906)911-66-29</div>
+        </div>
+        <div id="footer-email">
+          <div>Почта:</div>
+          <div>gelios177@list.ru</div>
+        </div>
+        <div id="footer-price-list">
+          <div>Прайс лист:</div>
+          <div>Скачать</div>
+        </div>
+        </div>
+        <div id="footer-bottom">ООО "Гелиос"&copy</div>
+        <div class="vacuum"></div>
+      </footer>
+      <!--scripts for Bootstrap-->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </main>
+</body>
+</html>

@@ -1,0 +1,257 @@
+main {
+    background-color: #f6f6f6;
+}
+#top-banner-cont {
+    display: flex;
+    justify-content: center;
+}
+#top-banner {
+    border-radius: 10px;
+    width: 1000px;
+    height: 200px;
+    margin-top: 10px;
+}
+
+/*header*/
+#header-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+    /*margin-top: 5px;*/
+    margin-bottom: -10px;
+}
+#header-top-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 65%;
+}
+#header-top a {
+    color: black;
+}
+#search-form {
+    display: flex;
+    flex-direction: row;
+    width: 54%;
+    margin-right: 10px;
+}
+#search-form input {
+    width: 100%;
+    margin-right: 10px;
+}
+#navbarcontent {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end;
+}
+#auth-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#auth-container button {
+    margin-right: 10px;
+}
+#main-nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+#order-butt {
+    margin-right: 10px;
+}
+
+/*footer*/
+footer {
+    color: white;
+}
+#foot-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#foot-cont div {
+    margin-right: 50px;
+}
+#footer-bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: -50px;
+}
+.vacuum {
+    height: 30px;
+}
+#foot-cont div div {
+    display: flex;
+    justify-content: center;
+}
+
+/*main page*/
+#best-products {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+#best-product {
+    width: 24%;
+    font-size: large;
+}
+#best-product-image {
+    width: 100%;
+    height: 250px;
+    margin-top: 3px;
+}
+/*#best-products-name {*/
+    /*text-decoration: none;*/
+    /*color: black;*/
+/*}*/
+#count-and-to-order {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#count-and-to-order input {
+    width: 50px;
+}
+#count-and-to-order div {
+    margin-top: 5px;
+}
+#price-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#best-products-title {
+    display: flex;
+    justify-content: center;
+}
+#about-us-title {
+    display: flex;
+    justify-content: center;
+}
+#first-article-with-picture {
+    display: flex;
+    flex-direction: row;
+}
+#first-article-image {
+    width: 20%;
+    height: 20%;
+}
+#content-about-shop {
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+/*product*/
+#product-data {
+    width: 80%;
+    margin: auto;
+}
+#main-product-description-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+#product-image {
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 300px;
+    height: 300px;
+}
+#product-description-container {
+    margin: auto;
+}
+#product-price {
+    font-size: xx-large;
+    font-weight: bold;
+}
+#product-price-per-one {
+    font-size: larger;
+}
+#product-top-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#product-buy-button {
+    margin-bottom: 10px;
+}
+#product-other-data {
+    margin-bottom: 10px;
+}
+#product-other-data a {
+    color: black;
+}
+.description-data {
+    margin: 10px;
+}
+
+/*category*/
+#cat-vacuum {
+    height: 10px;
+}
+#cat-container {
+    width: 70%;
+    margin: auto;
+}
+#cat-prod-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#cat-prod-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+#cat-prod-left img {
+    width: 100px;
+    height: 100px;
+}
+#cat-prod-left h5 {
+    width: 50%;
+    margin-left: 10px;
+}
+#like-butt {
+    color: transparent;
+    text-shadow: 0 0 0 indianred;
+}
+#cat-prod-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+#cat-prod-right-left {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+#cat-prod-right-right {
+    display: flex;
+    flex-direction: column;
+}
+#cat-prod-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+#cat-prod-buttons button {
+    margin-right: 5px;
+}
+#cat-prod-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 5px;
+}
+#cat-prod-form input {
+    width: 50px;
+    margin-left: 5px;
+}

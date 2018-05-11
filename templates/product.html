@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div id="product-data">
+    <h1 id="product-title">{{ product_ex.name }}</h1>
+    <div class="card" id="main-product-description-container">
+      <img src="../../static/media/{{ product_ex.image }}" id="product-image">
+      <div id="product-description-container">
+        <div id="product-top-description">
+          <div id="product-price-per-one">{{ product_ex.price_per_some }}:</div>
+          <div id="product-price">{{ product_ex.price }}&#8381;</div>
+          {% if product_ex.is_active%}
+            <div>В наличии</div>
+          {% else %}
+            <div>Нет в наличии</div>
+          {% endif %}
+          <button class="btn btn-outline-success" id="product-buy-button">Добавить в корзину</button>
+          <button class="btn btn-outline-warning">Добавить в избранное</button>
+        </div>
+      </div>
+    </div>
+    <div id="product-other-data" class="card">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active nav-item">
+          <a class="nav-link" href="#characteristics" aria-controls="characteristics" role="tab" data-toggle="tab">Характеристики</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" href="#description" aria-controls="description" role="tab" data-toggle="tab">Описание</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" href="#delivery" aria-controls="delivery" role="tab" data-toggle="tab">Доставка</a>
+        </li>
+      </ul>
+      <div class="tab-content product-description-tabs">
+        <div role="tabpanel" class="tab-pane active description-data" id="characteristics">
+          {% for line in characteristic_lines %}
+            <div>{{ line }}</div>
+          {% endfor %}
+        </div>
+        <div role="tabpanel" class="tab-pane description-data" id="description">
+          {% for line in description_lines %}
+            <p>&emsp;{{ line }}</p>
+          {% endfor %}
+        </div>
+        <div role="tabpanel" class="tab-pane description-data" id="delivery">
+          Информация о доставке.
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

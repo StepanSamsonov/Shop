@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+{% block content %}
+  <div id="best-products-title">
+    <h1>Лучшие предложения</h1>
+  </div>
+  <div id="best-products">
+    {% for product in products %}
+      <div class="card" id="best-product">
+        <a href="{% url 'product' product.id %}">
+          <img src="static/media/{{ product.image }}" id="best-product-image">
+        </a>
+        <div class="card-body">
+{#          <a href="{% url 'product' product.id %}" id="best-product-name">#}
+            {{ product.name|truncatechars_html:25 }}
+{#          </a>#}
+          <div id="price-data">
+            <h3 id="best-product-price">{{ product.price }} &#8381</h3>
+            <p id="best-price-per-one">{{ product.price_per_some }}</p>
+          </div>
+          <div id="count-and-to-order">
+            <div>Количество:</div>
+            <input type="number" id="count-of-best-product" min="0" max="1000000" value="1" placeholder="0">
+            <button type="button" class="btn btn-secondary">Добавить</button>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div id="about-us-title">
+    <h1>Немного о нас</h1>
+  </div>
+  <div id="content-about-shop">
+    <div id="first-article-with-picture">
+      <p id="first-articl-discription">&emsp;В своей работе основной упор мы делаем на качество, поэтому наши постоянные клиенты нам доверяют. Мы предлагаем широкий спектр строительных и отделочных материалов от ведущих производителей, продукция которых хорошо показала себя на практике. Наши специалисты проводят собственные испытания и опираются на отзывы опытных мастеров, что позволяет не только формировать лучшие товарные позиции каталога, но и взаимодействовать напрямую с производителями материалов с целью повышения их эффективности, удобства в использовании. Каждый наш покупатель получает гарантии качества, может быть уверенным в строгом соблюдении условий хранения и транспортировки продукции, объективности цен, что и ложится в основу взаимного доверия.</p>
+      <img src="../static/media/main/100.jpg" id="first-article-image">
+    </div>
+    <p>&emsp;Весь ассортимент пиломатериалов практически всегда находится у нас в наличии на складах. В необходимом выборе вам стройматериалов помогут наши менеджеры в офисе или по телефону горячай линии.</p>
+    <p>&emsp;Купленные у нас пиломатериалы оптом мы можем доставить по вашему адресу в Москве и Московской области.</p>
+  </div>
+{% endblock %}
