@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from product.models import *
-import sys
 
 
 def product(request, product_id):
