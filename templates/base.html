@@ -23,50 +23,7 @@
           </div>
       </div>
 
-      <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-        <div id="main-nav-container">
-          <a class="navbar-brand" href="/">
-            <img src="/static/media/base/icon.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-            Гелиос
-          </a>
-
-          <div class="collapse navbar-collapse" id="navbarcontent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Категории
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'category' 'Пиломатериалы' %}">Пиломатериалы</a>
-                  <a class="dropdown-item" href="{% url 'category' 'Столярные_изделия' %}">Столярные изделия</a>
-                  <a class="dropdown-item" href="{% url 'category' 'ОСП' %}">ОСП</a>
-                  <a class="dropdown-item" href="{% url 'category' 'ДВП' %}">ДВП</a>
-                  <a class="dropdown-item" href="{% url 'category' 'Фанера' %}">Фанера</a>
-                  <a class="dropdown-item" href="{% url 'category' 'Евровагонка' %}">Евровагонка</a>
-                  <a class="dropdown-item" href="{% url 'category' 'Подоконники' %}">Подоконники</a>
-                  <a class="dropdown-item" href="{% url 'category' 'Щиты' %}">Щиты</a>
-                  <a class="dropdown-item" href="{% url 'category' 'Лестницы' %}">Лестницы</a>
-                  <a class="dropdown-item" href="{% url 'category' 'Имитация_бруса' %}">Имитация бруса</a>
-                  <a class="dropdown-item" href="{% url 'category' 'Погонажные_изделия' %}">Погонажные изделия</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Избранное</a>
-              </li>
-            </ul>
-            <button id="order-butt" type="button" class="btn btn-outline-secondary" href="#">Корзина</button>
-            <form id="search-form">
-              <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Поиск</button>
-            </form>
-            <div id="auth-container">
-              <button type="button" class="btn btn-outline-success">Вход</button>
-              <button type="button" class="btn btn-outline-success">Регистрация</button>
-            </div>
-          </div>
-        </div>
-      </nav>
-      {{ cat_list }}
+    {% include 'nav.html' %}
 
       <div id="top-banner-cont">
         <img src="{% static 'media/main/banner.bmp' %}" id="top-banner">
