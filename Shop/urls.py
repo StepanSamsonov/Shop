@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^', include('category.urls')),
     url(r'^', include('main.urls')),
     url(r'^', include('order.urls')),
+    url(r'^', include('search.urls')),
 ]
