@@ -107,6 +107,9 @@ footer {
     height: 250px;
     margin-top: 3px;
 }
+#best-product-price {
+    width: 200px;
+}
 /*#best-products-name {*/
     /*text-decoration: none;*/
     /*color: black;*/
