@@ -21,9 +21,11 @@
             <p id="best-price-per-one">{{ product.price_per_some }}</p>
           </div>
           <div id="count-and-to-order">
-            <div>Количество:</div>
-            <input type="number" id="count-of-best-product" min="0" max="1000000" value="1" placeholder="0">
-            <button type="button" class="btn btn-secondary">Добавить</button>
+            <div class="label-input-controlled">Количество:</div>
+            <div id="main-input-butt">
+              <input class="form-control" type="number" id="count-of-best-product" min="0" max="1000000" value="1" placeholder="0">
+              <button type="button" class="btn btn-secondary">Добавить</button>
+            </div>
           </div>
         </div>
       </div>

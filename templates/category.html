@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block content %}
-  {% include 'filters.html' %}
   <div id="cat-container">
     <h2>{{ cat_name }}</h2>
     <div>Найдено товаров: {{ len_prods }}</div>
@@ -27,8 +26,8 @@
                   <button type="button" class="btn btn-secondary" id="like-butt">&#10084;</button>
                 </div>
                 <div id="cat-prod-form">
-                  <div>Количество:</div>
-                  <input type="number" id="count-of-best-product" min="0" max="1000000" value="1" placeholder="0">
+                  <div class="label-input-controlled">Количество:</div>
+                  <input class="form-control" type="number" id="count-of-best-product" min="0" max="1000000" value="1" placeholder="0">
                 </div>
                 {% if product.is_active%}
                   <div>В наличии</div>

@@ -11,7 +11,9 @@ main {
     height: 200px;
     margin-top: 10px;
 }
-
+.label-input-controlled {
+    margin-top: 5px;
+}
 /*header*/
 #header-top {
     display: flex;
@@ -116,14 +118,19 @@ footer {
 /*}*/
 #count-and-to-order {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 }
 #count-and-to-order input {
-    width: 50px;
+    width: 60px;
+    margin-right: 10px;
 }
 #count-and-to-order div {
     margin-top: 5px;
+}
+#main-input-butt {
+    display: flex;
+    flex-direction: row;
 }
 #price-data {
     display: flex;
@@ -265,7 +272,7 @@ footer {
     margin-top: 5px;
 }
 #cat-prod-form input {
-    width: 50px;
+    width: 60px;
     margin-left: 5px;
 }
 
