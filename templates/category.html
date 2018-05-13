@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+  {% include 'filters.html' %}
   <div id="cat-container">
     <h2>{{ cat_name }}</h2>
     <div>Найдено товаров: {{ len_prods }}</div>

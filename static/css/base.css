@@ -268,3 +268,97 @@ footer {
     width: 50px;
     margin-left: 5px;
 }
+
+/*filter*/
+#filter-form {
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+}
+#filter-form-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#filter-bottom-elems {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#filter-top-elems {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+#filter-top-elems h5 {
+    margin-top: 5px;
+}
+#filter-top-top-elems {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.filter-price-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+#filter-top-left-elem {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 10%;
+    margin-top: 5px;
+}
+#filter-top-left-elem label {
+    margin-right: 10px;
+    width: 150px;
+}
+#filter-top-right-elem {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 10%;
+    margin-top: 10px;
+}
+#filter-top-right-elem input {
+    width: 100px;
+    margin-right: 10px;
+}
+#filter-top-right-elem label {
+    margin-right: 10px;
+    margin-top: 5px;
+}
+#filter-top-elems h5 {
+    margin-left: 10%;
+}
+#filter-bottom-elems {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.filter-bottom-elem {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    margin-right: 10%;
+}
+.filter-bottom-elem label {
+    margin-top: 5px;
+    margin-right: 5px;
+    width: 100px;
+    font-weight: bold;
+}
+.filter-bottom-elem select {
+    width: 70%;
+}
+#filter-apply-btn {
+    width: 110px;
+    margin-left: 10%;
+    margin-top: 10px;
+}
+#filter-btn-cont {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,65 @@
+{% load per_some %}
+{% load categ_items %}
+
+<form id="filter-form">
+  <div class="card">
+    <div id="filter-form-cont">
+      <div id="filter-top-elems">
+        <h5>Цена:</h5>
+        <div id="filter-top-top-elems">
+          <div id="filter-top-left-elem">
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked>
+              <label class="custom-control-label" for="customRadio1">По возрастанию</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio2">По убыванию</label>
+            </div>
+          </div>
+
+          <div id="filter-top-right-elem">
+            <div class="filter-price-cont">
+              <label for="from-price-input">От:</label>
+              <input class="form-control" id="from-price-input" type="number" name="from_price" value="{{ from_price }}">
+            </div>
+            <div class="filter-price-cont">
+              <label for="to-price-input">До:</label>
+              <input class="form-control" id="to-price-input" type="number" name="to_price" value="{{ to_price }}">
+            </div>
+          </div>
+        </div>
+        <div id="filter-btn-cont">
+          <input class="btn btn-primary" type="submit" value="Применить" id="filter-apply-btn">
+        </div>
+      </div>
+
+      <div id="filter-bottom-elems">
+        <div class="filter-bottom-elem">
+          <label for="per-some-select">Единицы:</label>
+          <select id="per-some-select" class="form-control">
+            <option selected>Все</option>
+            {% per_some_elems %}
+          </select>
+        </div>
+
+        <div class="filter-bottom-elem">
+          <label for="exist-select">В наличии:</label>
+          <select id="exist-select" class="form-control">
+            <option selected>Все</option>
+            <option>Есть</option>
+            <option>Нет</option>
+          </select>
+        </div>
+
+        <div class="filter-bottom-elem">
+          <label for="category-select">Категории:</label>
+          <select id="category-select" class="form-control">
+            <option selected>Все</option>
+            {% categ_items %}
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
