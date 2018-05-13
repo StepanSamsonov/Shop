@@ -192,7 +192,17 @@ footer {
 .description-data {
     margin: 10px;
 }
-
+#product-button-cont {
+    margin-top: 10px;
+}
+#product-stuff-cont input {
+    width: 50px;
+}
+#product-count-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
 /*category*/
 #cat-vacuum {
     height: 10px;
