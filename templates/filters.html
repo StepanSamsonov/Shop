@@ -1,7 +1,9 @@
 {% load per_some %}
 {% load categ_items %}
 
-<form id="filter-form">
+<form id="filter-form" action="/search" method="post">
+  {% csrf_token %}
+  <input class="form-control" type="hidden" name="text_search" placeholder="Search" aria-label="Search" value="{{ text_search }}">
   <div class="card">
     <div id="filter-form-cont">
       <div id="filter-top-elems">
@@ -9,11 +11,13 @@
         <div id="filter-top-top-elems">
           <div id="filter-top-left-elem">
             <div class="custom-control custom-radio">
-              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked>
+              <input type="radio" id="customRadio1" name="filterRadio" class="custom-control-input"
+                     value="filterRadioUp" {% if filter_sort_by == 'filterRadioUp' %}checked{% endif %}>
               <label class="custom-control-label" for="customRadio1">По возрастанию</label>
             </div>
             <div class="custom-control custom-radio">
-              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+              <input type="radio" id="customRadio2" name="filterRadio" class="custom-control-input"
+                     value="filterRadioDown" {% if filter_sort_by == 'filterRadioDown' %}checked{% endif %}>
               <label class="custom-control-label" for="customRadio2">По убыванию</label>
             </div>
           </div>
@@ -21,42 +25,42 @@
           <div id="filter-top-right-elem">
             <div class="filter-price-cont">
               <label for="from-price-input">От:</label>
-              <input class="form-control" id="from-price-input" type="number" name="from_price" value="{{ from_price }}">
+              <input class="form-control" id="from-price-input" type="number" name="filter_price_from" value="{{ filter_price_from }}">
             </div>
             <div class="filter-price-cont">
               <label for="to-price-input">До:</label>
-              <input class="form-control" id="to-price-input" type="number" name="to_price" value="{{ to_price }}">
+              <input class="form-control" id="to-price-input" type="number" name="filter_price_to" value="{{ filter_price_to }}">
             </div>
           </div>
         </div>
         <div id="filter-btn-cont">
-          <input class="btn btn-primary" type="submit" value="Применить" id="filter-apply-btn">
+          <input class="btn btn-primary" type="submit" value="Применить" id="filter-apply-btn" name="filter_butt">
         </div>
       </div>
 
       <div id="filter-bottom-elems">
         <div class="filter-bottom-elem">
           <label for="per-some-select">Единицы:</label>
-          <select id="per-some-select" class="form-control">
-            <option selected>Все</option>
+          <select id="per-some-select" class="form-control" name="filter_per_some">
             {% per_some_elems %}
+            <option {% if filter_per_some == 'Все' %}selected{% endif %}>Все</option>
           </select>
         </div>
 
         <div class="filter-bottom-elem">
           <label for="exist-select">В наличии:</label>
-          <select id="exist-select" class="form-control">
-            <option selected>Все</option>
-            <option>Есть</option>
-            <option>Нет</option>
+          <select id="exist-select" class="form-control" name="filter_is_exist">
+            <option value="Есть" {% if filter_is_exist == 'Есть' %}selected{% endif %}>Есть</option>
+            <option value="Нет" {% if filter_is_exist == 'Нет' %}selected{% endif %}>Нет</option>
+            <option value="Все" {% if filter_is_exist == 'Все' %}selected{% endif %}>Все</option>
           </select>
         </div>
 
         <div class="filter-bottom-elem">
           <label for="category-select">Категории:</label>
-          <select id="category-select" class="form-control">
-            <option selected>Все</option>
+          <select id="category-select" class="form-control" name="filter_categories">
             {% categ_items %}
+            <option value="Все" {% if filter_categories == 'Все' %}selected{% endif %}>Все</option>
           </select>
         </div>
       </div>
