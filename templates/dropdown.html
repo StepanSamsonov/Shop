@@ -1,5 +1,5 @@
 {% for item, url in items %}
-    {% with ''|add:item as way %}
-    <a class="dropdown-item" href="{% url 'search' %}">{{ item }}</a>
+    {% with ''|add:url as link %}
+    <a class="dropdown-item" href="{% url 'category' link %}">{{ item }}</a>
     {% endwith %}
 {% endfor %}
