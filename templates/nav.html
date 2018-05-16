@@ -16,19 +16,22 @@
             {% dropdown %}
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Избранное</a>
-        </li>
       </ul>
-      <button id="order-butt" type="button" class="btn btn-outline-secondary" href="#">Корзина</button>
+      <a href="{% url 'main' %}"><button type="button" id="nav-liked-button" class="btn btn-outline-secondary"
+      {% if not is_login %}disabled{% endif %}>Избранное</button></a>
+      <a href="{% url 'main' %}"><button id="order-butt" type="button" class="btn btn-outline-secondary" href="#">Корзина</button></a>
       <form id="search-form" action="/search/" method="post">
         {% csrf_token %}
         <input class="form-control" type="text" name="text_search" placeholder="Search" aria-label="Search" value="{{ text_search }}">
         <input class="btn btn-outline-success" type="submit" value="Поиск" style="width:90px" name="search_butt">
       </form>
       <div id="auth-container">
-        <button type="button" class="btn btn-outline-success">Вход</button>
-        <a href="{% url 'signup' %}"><button type="button" class="btn btn-outline-success" href="{% url 'signup' %}">Регистрация</button></a>
+        {% if is_login %}
+          <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-success">Выход</button></a>
+        {% else %}
+          <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-success">Вход</button></a>
+        {% endif %}
+        <a href="{% url 'signup' %}"><button type="button" class="btn btn-outline-success" id="nav-signup-butt">Регистрация</button></a>
       </div>
     </div>
   </div>

@@ -1,4 +1,3 @@
-import sys
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.models import User
@@ -17,7 +16,6 @@ def signup(request):
             user_login = signup_form.cleaned_data['user_login']
             user_password = signup_form.cleaned_data['user_password']
             user_password_again = signup_form.cleaned_data['user_password_again']
-            print(sys.stderr, signup_form.cleaned_data)
             if user_password == user_password_again:
                 user = User.objects.create_user(user_login, user_email, user_password,
                                                 first_name=user_name, last_name=user_surname)

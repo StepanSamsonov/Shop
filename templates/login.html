@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <form action="/login/" method="post" id="login-form" class="card">
+    <h4>Авторизация</h4>
+    {% csrf_token %}
+    <label for="login-form-name">Логин</label>
+    <input id="login-form-name" class="form-control" type="text" placeholder="Логин" name="user_login">
+
+    <label for="login-form-password">Пароль</label>
+    <input id="login-form-password" class="form-control" type="text" placeholder="Пароль" name="user_password">
+
+    <div id="login-butt-cont">
+    <input id="login-butt" class="btn btn-outline-primary" type="submit" value="Вход" name="login_butt">
+    </div>
+  </form>
+{% endblock %}

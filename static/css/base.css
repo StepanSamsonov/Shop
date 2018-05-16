@@ -36,7 +36,7 @@ main {
 #search-form {
     display: flex;
     flex-direction: row;
-    width: 54%;
+    width: 50%;
     margin-right: 10px;
 }
 #search-form input {
@@ -52,8 +52,13 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 18%;
 }
-#auth-container button {
+#nav-liked-button {
+    margin-right: 10px;
+}
+#nav-signup-butt {
+    margin-left: 10px;
     margin-right: 10px;
 }
 #main-nav-container {
@@ -393,6 +398,35 @@ footer {
     margin: auto;
 }
 #signup-butt-cont {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
+    margin-left: 10%;
+}
+
+/*login*/
+#login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#login-form input {
+    width: 80%;
+    margin: auto;
+}
+#login-form label {
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+}
+#login-form h4 {
+    margin: auto;
+}
+#login-butt-cont {
     margin-bottom: 20px;
     margin-top: 20px;
     width: 100%;

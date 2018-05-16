@@ -28,4 +28,6 @@ urlpatterns = [
     url(r'^', include('order.urls')),
     url(r'^', include('search.urls')),
     url(r'^', include('signup.urls')),
+    url(r'^', include('login.urls')),
+    url(r'^', include('logout.urls')),
 ]
