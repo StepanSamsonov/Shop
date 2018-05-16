@@ -27,4 +27,5 @@ urlpatterns = [
     url(r'^', include('main.urls')),
     url(r'^', include('order.urls')),
     url(r'^', include('search.urls')),
+    url(r'^', include('signup.urls')),
 ]
