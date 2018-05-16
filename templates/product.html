@@ -18,11 +18,12 @@
           <div id="product-stuff-cont">
             <div id="product-count-cont">
               <div>Количество:</div>
-              <input type="number" min="0" max="1000000" value="1" placeholder="0">
+              <input class="form-control" type="number" min="0" max="1000000" value="1" placeholder="0">
             </div>
             <div id="product-button-cont">
               <button type="button" class="btn btn-secondary" id="product-to-order-butt">В корзину</button>
-              <button type="button" class="btn btn-secondary" id="like-butt">&#10084;</button>
+              <button type="button" class="btn btn-secondary" id="like-butt"
+              {% if not is_login %} disabled {% endif %}>&#10084;</button>
             </div>
           </div>
         </div>

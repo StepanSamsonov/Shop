@@ -137,6 +137,9 @@ footer {
     display: flex;
     flex-direction: row;
 }
+#main-input-butt button {
+    margin-right: 10px;
+}
 #price-data {
     display: flex;
     flex-direction: column;
@@ -217,6 +220,13 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+}
+#product-count-cont div {
+    margin-top: 5px;
+    margin-right: 5px;
+}
+#product-count-cont input {
+    width: 60px;
 }
 /*category*/
 #cat-vacuum {

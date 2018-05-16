@@ -5,6 +5,8 @@ import sys
 
 
 def search(request, filter_categories='Все'):
+    is_login = request.user.is_authenticated()
+
     text_search = ''
     filter_price_from = 0
     filter_price_to = 10**6

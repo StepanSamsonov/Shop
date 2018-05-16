@@ -23,7 +23,8 @@
               <div id="cat-prod-right-right">
                 <div id="cat-prod-buttons">
                   <button type="button" class="btn btn-secondary">В корзину</button>
-                  <button type="button" class="btn btn-secondary" id="like-butt">&#10084;</button>
+                  <button type="button" class="btn btn-secondary" id="like-butt"
+                  {% if not is_login %}disabled{% endif %}>&#10084;</button>
                 </div>
                 <div id="cat-prod-form">
                   <div class="label-input-controlled">Количество:</div>
