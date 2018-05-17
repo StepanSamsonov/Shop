@@ -3,6 +3,9 @@ from product.models import *
 
 
 def category(request, cat_name):
+    is_login = request.user.is_authenticated()
+    user_name = request.user.username
+
     if '_' in cat_name:
         cat_name = ' '.join(cat_name.split('_'))
 
