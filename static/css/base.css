@@ -442,3 +442,9 @@ footer {
     width: 100%;
     margin-left: 10%;
 }
+
+/*favorite*/
+#fav-del-butt {
+    color: black;
+    font-size: x-large;
+}

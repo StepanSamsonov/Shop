@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^', include('signup.urls')),
     url(r'^', include('login.urls')),
     url(r'^', include('logout.urls')),
+    url(r'^', include('favorites.urls')),
 ]

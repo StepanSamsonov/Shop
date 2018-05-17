@@ -17,8 +17,10 @@
           </div>
         </li>
       </ul>
-      <a href="{% url 'main' %}"><button type="button" id="nav-liked-button" class="btn btn-outline-secondary"
+      {% with ''|add:user_name as way %}
+      <a href="{% url 'favorites' way %}"><button type="button" id="nav-liked-button" class="btn btn-outline-secondary"
       {% if not is_login %}disabled{% endif %}>Избранное</button></a>
+      {% endwith %}
       <a href="{% url 'main' %}"><button id="order-butt" type="button" class="btn btn-outline-secondary" href="#">Корзина</button></a>
       <form id="search-form" action="/search/" method="post">
         {% csrf_token %}
