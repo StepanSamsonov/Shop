@@ -448,3 +448,14 @@ footer {
     color: black;
     font-size: x-large;
 }
+
+/*order*/
+#to-checkout-cont {
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+#to-checkout-order-butt {
+    width: 50%;
+}
