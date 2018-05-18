@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from signup.forms import SignUpForm
-from signup.models import LikedProducts
+from signup.models import UserAddedData
 
 
 def signup(request):
@@ -31,7 +31,7 @@ def signup(request):
                 user = User.objects.create_user(user_login, user_email, user_password,
                                                 first_name=user_name, last_name=user_surname)
 
-                LikedProducts.objects.create(owner_name=user_login, liked_data='')
+                # UserAddedData.objects.create(owner_name=user_login, liked_data='', order_data='')
                 login(request, user)
                 return HttpResponseRedirect('/')
             else:

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from signup.models import LikedProducts
+from signup.models import UserAddedData
 from product.models import Product
 
 
@@ -7,7 +7,7 @@ def favorites(request, user_name):
     is_login = request.user.is_authenticated()
     user_name = request.user.username
 
-    # ids = LikedProducts.objects.get(owner_name=user_name).liked_data
+    # ids = UserAddedData.objects.get(owner_name=user_name).liked_data
     ids = '6 7 8 9'
     ids = list(map(int, ids.split(' ')))
     new_ids = []
