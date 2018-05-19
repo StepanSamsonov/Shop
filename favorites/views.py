@@ -1,15 +1,39 @@
+from django.http import JsonResponse
 from django.shortcuts import render
-from signup.models import UserAddedData
-from product.models import Product
+from product.models import Product, UserData
+
+
+def update_favorites(request):
+    post = request.POST.dict()
+    user_name = request.user.username
+    user_data = UserData.objects.get(owner_name=user_name).liked_data
+    if user_data != '':
+        user_data = user_data.split(' ')
+    else:
+        user_data = []
+
+    if post['is_delete'] == 'false':
+        if post['product_id'] not in user_data:
+            user_data.append(post['product_id'])
+    else:
+        del user_data[user_data.index(post['product_id'])]
+
+    user_data = ' '.join(user_data)
+    user = UserData.objects.get(owner_name=user_name)
+    user.liked_data = user_data
+    user.save(update_fields=['liked_data'])
+    return JsonResponse(dict())
 
 
 def favorites(request, user_name):
     is_login = request.user.is_authenticated()
     user_name = request.user.username
 
-    # ids = UserAddedData.objects.get(owner_name=user_name).liked_data
-    ids = '6 7 8 9'
-    ids = list(map(int, ids.split(' ')))
+    ids = UserData.objects.get(owner_name=user_name).liked_data
+    if ids != '':
+        ids = list(map(int, ids.split(' ')))
+    else:
+        ids = []
     new_ids = []
     favorite_products = []
     for id_prod in ids:
@@ -19,4 +43,7 @@ def favorites(request, user_name):
         except:
             pass
     ids = ' '.join(new_ids)
+    data = UserData.objects.get(owner_name=user_name)
+    data.liked_data = ids
+    data.save(update_fields=['liked_data'])
     return render(request, 'favorites.html', locals())

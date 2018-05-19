@@ -6,7 +6,7 @@
     <h2>Избранное</h2>
     <ul class="list-group">
       {% for product in favorite_products %}
-        <li class="list-group-item">
+        <li class="list-group-item {{ product.id }}-to-remove-fav-class">
           <div id="cat-prod-container">
             <div id="cat-prod-left">
               <a href="{% url 'product' product.id %}">
@@ -20,15 +20,25 @@
                 <div id="best-price-per-one">{{ product.price_per_some }}</div>
               </div>
               <div id="cat-prod-right-right">
-                <div id="cat-prod-buttons">
-                  <button type="button" class="btn btn-secondary">В корзину</button>
-                  <button type="button" class="btn btn-secondary" id="fav-del-butt"
-                  {% if not is_login %}disabled{% endif %}>&#215;</button>
-                </div>
-                <div id="cat-prod-form">
+                <form class="product-liked-form" id="cat-prod-buttons" action="{% url 'update_favorites' %}">
+                  {% csrf_token %}
+                  <button class="btn btn-secondary like-butt" id="fav-del-butt"
+                          data-product_id = "{{ product.id }}"
+                          data-is_delete="true"
+                          data-loc="main"
+                  >&#215;</button>
+                </form>
+                <form id="cat-prod-form" class="product-stuff-cont" action="{% url 'update_order' %}">
+                  {% csrf_token %}
                   <div class="label-input-controlled">Количество:</div>
-                  <input class="form-control" type="number" id="count-of-best-product" min="0" max="1000000" value="1" placeholder="0">
-                </div>
+                  <input class="form-control {{ product.id }}-product-input" type="number" id="count-of-best-product"
+                         min="0" max="1000000" value="1" placeholder="0">
+                  <button type="button" class="btn btn-secondary to-order-butt"
+                          data-product_id = "{{ product.id }}"
+                          data-is_delete = "false"
+                          data-loc = "main"
+                  >Добавить</button>
+                </form>
                 {% if product.is_active%}
                   <div>В наличии</div>
                 {% else %}

@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login
 
 
 def login_user(request):
+    is_login = request.user.is_authenticated()
+    user_name = request.user.username
 
     if request.method == 'POST':
         signup_form = LogInForm(request.POST)

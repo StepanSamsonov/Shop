@@ -15,17 +15,30 @@
           {% else %}
             <div>Нет в наличии</div>
           {% endif %}
-          <div id="product-stuff-cont">
+          <form id="product-stuff-cont" action="{% url 'update_order' %}">
+            {% csrf_token %}
             <div id="product-count-cont">
               <div>Количество:</div>
-              <input class="form-control" type="number" min="0" max="1000000" value="1" placeholder="0">
+              <input class="form-control" id="product-to-order-count" type="number"
+                     min="0" max="1000000" value="1" placeholder="0">
             </div>
             <div id="product-button-cont">
-              <button type="button" class="btn btn-secondary" id="product-to-order-butt">В корзину</button>
-              <button type="button" class="btn btn-secondary" id="like-butt"
-              {% if not is_login %} disabled {% endif %}>&#10084;</button>
+              <button type="submit" class="btn btn-secondary" id="product-to-order-butt"
+                      data-product_id = "{{ product_ex.id }}"
+                      data-is_delete="false"
+                      data-loc="product"
+              >В корзину</button>
             </div>
-          </div>
+          </form>
+          <form id="product-liked-form" action="{% url 'update_favorites' %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-secondary" id="like-butt"
+              {% if not is_login %} disabled {% endif %}
+                      data-product_id = "{{ product_ex.id }}"
+                      data-is_delete="false"
+                      data-loc="product"
+              >&#10084;</button>
+          </form>
         </div>
       </div>
     </div>

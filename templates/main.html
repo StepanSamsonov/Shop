@@ -22,12 +22,25 @@
           </div>
           <div id="count-and-to-order">
             <div class="label-input-controlled">Количество:</div>
-            <div id="main-input-butt">
-              <input class="form-control" type="number" id="count-of-best-product" min="0" max="1000000" value="1" placeholder="0">
-              <button type="button" class="btn btn-secondary">Добавить</button>
-              <button type="button" class="btn btn-secondary" id="like-butt"
-                {% if not is_login %} disabled {% endif %}>&#10084;</button>
-            </div>
+            <form id="main-input-butt" class="product-stuff-cont" action="{% url 'update_order' %}">
+              {% csrf_token %}
+              <input class="form-control to-order-count {{ product.id }}-product-input" type="number" id="count-of-best-product"
+                     min="0" max="1000000" value="1" placeholder="0">
+              <button class="btn btn-secondary to-order-butt" id="main-add-order-btn"
+                data-product_id = "{{ product.id }}"
+                data-is_delete = "false"
+                data-loc = "main"
+              >Добавить</button>
+            </form>
+            <form class="product-liked-form" action="{% url 'update_favorites' %}">
+              {% csrf_token %}
+              <button class="btn btn-secondary like-butt" id="like-butt"
+              {% if not is_login %} disabled {% endif %}
+                      data-product_id = "{{ product.id }}"
+                      data-is_delete="false"
+                      data-loc="main"
+              >&#10084;</button>
+            </form>
           </div>
         </div>
       </div>

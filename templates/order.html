@@ -6,7 +6,7 @@
     <h2>Заказ</h2>
     <ul class="list-group">
       {% for product, count in order_dict.items %}
-        <li class="list-group-item">
+        <li class="list-group-item {{ product.id }}-to-remove-order-class">
           <div id="cat-prod-container">
             <div id="cat-prod-left">
               <a href="{% url 'product' product.id %}">
@@ -20,16 +20,25 @@
                 <div id="best-price-per-one">{{ product.price_per_some }}</div>
               </div>
               <div id="cat-prod-right-right">
-                <div id="cat-prod-buttons">
-                  <button type="button" class="btn btn-secondary">Изменить</button>
-                  <button type="button" class="btn btn-secondary" id="fav-del-butt"
-                  {% if not is_login %}disabled{% endif %}>&#215;</button>
-                </div>
-                <div id="cat-prod-form">
+                <form class="product-stuff-cont" id="cat-prod-buttons" action="{% url 'update_order' %}">
+                  {% csrf_token %}
+                  <button class="btn btn-secondary to-order-butt" id="fav-del-butt"
+                          data-product_id = "{{ product.id }}"
+                          data-is_delete="true"
+                          data-loc="main"
+                  >&#215;</button>
+                </form>
+                <form id="cat-prod-form" class="product-stuff-cont" action="{% url 'update_order' %}">
+                  {% csrf_token %}
                   <div class="label-input-controlled">Количество:</div>
-                  <input class="form-control" type="number" id="count-of-best-product" min="0" max="1000000" value="{{ count }}" placeholder="0">
-                </div>
-                {% if product.is_active%}
+                  <input class="form-control {{ product.id }}-product-input" type="number" id="count-of-best-product"
+                         min="0" max="1000000" value="{{ count }}" placeholder="0">
+                  <button type="button" class="btn btn-secondary to-order-butt"
+                          data-product_id = "{{ product.id }}"
+                          data-is_delete = "false"
+                          data-loc = "main"
+                  >Добавить</button>
+                </form>                {% if product.is_active%}
                   <div>В наличии</div>
                 {% else %}
                   <div>Нет в наличии</div>
@@ -40,9 +49,11 @@
         </li>
       {% endfor %}
     </ul>
+    {% if correct_order %}
     <div id="to-checkout-cont">
       <button class="btn btn-primary" id="to-checkout-order-butt">Оформить заказ</button>
     </div>
+    {% endif %}
   </div>
   <div id="cat-vacuum"></div>
 {% endblock %}
