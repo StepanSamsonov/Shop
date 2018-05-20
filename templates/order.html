@@ -62,8 +62,8 @@
         <h3>Всего: {{ total_order_price }} &#8381</h3>
       </div>
       <div id="to-checkout-cont">
-        <button class="btn btn-primary" id="to-checkout-order-butt"
-        {% if not correct_order %}disabled{% endif %}>Оформить заказ</button>
+        <a href="{% url 'checkout' %}" id="to-checkout-order-butt"><button class="btn btn-primary"
+        {% if not correct_order %}disabled{% endif %}>Оформить заказ</button></a>
       </div>
   </div>
   <div id="cat-vacuum"></div>

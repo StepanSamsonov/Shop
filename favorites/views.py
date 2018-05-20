@@ -25,7 +25,7 @@ def update_favorites(request):
     return JsonResponse(dict())
 
 
-def favorites(request, user_name):
+def favorites(request):
     is_login = request.user.is_authenticated()
     user_name = request.user.username
 

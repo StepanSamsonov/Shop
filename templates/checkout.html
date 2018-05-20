@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <form action="/checkout/" method="post" id="checkout-form" class="card">
+    <h4>Оформление заказа</h4>
+    {% csrf_token %}
+    <div>К оплате: ... </div>
+    <label for="checkout-form-address">Адрес доставки</label>
+    <input id="checkout-form-address" class="form-control" type="text" placeholder="Адрес" name="customer_address">
+
+    <label for="checkout-form-comment">Комментарии к заказу</label>
+    <textarea id="checkout-form-comment" class="form-control" type="text" placeholder="Комментарий" name="customer_comments">
+    </textarea>
+
+    <div id="signup-butt-cont">
+      <input id="checkout-butt" class="btn btn-outline-warning" type="submit" value="Оформить" name="checkout_butt">
+    </div>
+  </form>
+{% endblock %}

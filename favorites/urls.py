@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     url(r'^update_favorites', views.update_favorites, name='update_favorites'),
-    url(r'^favorites/(?P<user_name>.*)/$', views.favorites, name='favorites'),
+    url(r'^favorites/', views.favorites, name='favorites'),
 ]

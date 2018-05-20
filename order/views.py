@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from product.models import Product, UserData
-from django.http import JsonResponse
+from .models import Order, ProductInOrder, OrderStatus
+from django.http import JsonResponse, HttpResponseRedirect
+from .forms import CheckoutForm
 
 
 def str_to_dict(s):
@@ -38,7 +40,7 @@ def update_order(request):
     return JsonResponse(dict())
 
 
-def order(request, user_name):
+def order(request):
     is_login = request.user.is_authenticated()
     user_name = request.user.username
 
@@ -63,3 +65,44 @@ def order(request, user_name):
     data.order_data = new_data
     data.save(update_fields=['order_data'])
     return render(request, 'order.html', locals())
+
+
+def checkout(request):
+    is_login = request.user.is_authenticated()
+    user_name = request.user.username
+
+    if request.method == 'POST':
+        checkout_form = CheckoutForm(request.POST)
+        if checkout_form.is_valid():
+            address = checkout_form.cleaned_data['customer_address']
+            comments = checkout_form.cleaned_data['customer_comments']
+            user = request.user
+            customer_name = user.first_name + ' ' + user.last_name
+            user_data = UserData.objects.get(owner_name=user_name)
+            phone_number = user_data.phone_number
+            email = user.email
+            product_d = str_to_dict(user_data.order_data)
+
+            order_status = OrderStatus.objects.get(name='Новый')
+            new_order = Order(customer_name=customer_name, customer_email=email, customer_phone=phone_number,
+                          customer_address=address, comments=comments, status=order_status)
+            new_order.save()
+
+            for prod_id in product_d:
+                product = Product.objects.get(id=prod_id)
+                product_in_order = ProductInOrder(order=new_order, product=product, price_per_one=product.price,
+                                                  number=product_d[prod_id])
+                product_in_order.save()
+
+            return HttpResponseRedirect('/success')
+        else:
+            return HttpResponseRedirect('/checkout')
+
+    return render(request, 'checkout.html', locals())
+
+
+def success(request):
+    is_login = request.user.is_authenticated()
+    user_name = request.user.username
+
+    return render(request, 'success.html', locals())

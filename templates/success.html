@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div>
+    <h2>Ваш заказ успешно принят</h2>
+    <h5>Скоро с вами свяжется наш сотрудник</h5>
+    <a href="{% url 'main' %}"><button>На главную</button></a>
+  </div>
+{% endblock %}

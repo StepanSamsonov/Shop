@@ -468,6 +468,9 @@ footer {
 #to-checkout-order-butt {
     width: 50%;
 }
+#to-checkout-order-butt button {
+    width: 100%;
+}
 #order-total-price {
     display: flex;
     justify-content: flex-end;
