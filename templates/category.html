@@ -23,19 +23,21 @@
                 </div>
                 <div id="cat-prod-right-right">
                   <div id="cat-btn-cont">
-                    <button type="button" class="btn btn-secondary to-order-butt"
+                    <button type="button" class="btn btn-secondary to-order-butt {{ product.id }}-to-hide-btn"
                               data-product_id = "{{ product.id }}"
                               data-is_delete = "false"
                               data-loc = "main"
                       >Добавить</button>
-                     <form class="product-liked-form" action="{% url 'update_favorites' %}">
+                    <button hidden disabled class="btn btn-success notific-btn {{ product.id }}-notific-btn">Успешно</button>
+                    <form class="product-liked-form" action="{% url 'update_favorites' %}">
                       {% csrf_token %}
-                      <button class="btn btn-secondary like-butt" id="like-butt"
+                      <button class="btn btn-secondary like-butt {{ product.id }}-to-hide-like" id="like-butt"
                       {% if not is_login %} disabled {% endif %}
                               data-product_id = "{{ product.id }}"
                               data-is_delete="false"
                               data-loc="main"
                       >&#10084;</button>
+                      <button hidden disabled class="btn notific-like {{ product.id }}-notific-like">&#10084;</button>
                     </form>
                   </div>
                   <form id="cat-prod-form" class="product-stuff-cont" action="{% url 'update_order' %}">

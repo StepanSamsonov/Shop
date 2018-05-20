@@ -126,6 +126,9 @@ footer {
     flex-direction: row;
     justify-content: space-between;
 }
+#product-liked-form {
+    margin-top: 5px;
+}
 #main-add-order-btn {
     margin-left: 19%;
 }
@@ -535,4 +538,18 @@ footer {
 }
 #success-btn-cont a {
     width: 40%;
+}
+
+/*notifications*/
+.notific-btn {
+    width: 97px;
+}
+.notific-main-btn {
+    margin-left: 19%;
+    width: 120px;
+}
+.notific-like {
+    color: transparent;
+    text-shadow: 0 0 0 blue;
+    background-color: cadetblue;
 }

@@ -23,6 +23,14 @@ $(document).ready(function() {
             }
             $('#order-total-price div').text(price.toString() + '.00');
         }
+        $('.' + product_id + '-to-hide-btn').attr('hidden', true);
+        $('.' + product_id + '-notific-btn').attr('hidden', false);
+        var interval = setInterval(function() {
+            $('.' + product_id + '-to-hide-btn').attr('hidden', false);
+            $('.' + product_id + '-notific-btn').attr('hidden', true);
+            clearInterval(interval);
+        }, 1500);
+
         data['is_delete'] = is_delete;
         data["csrfmiddlewaretoken"] = csrf_token;
         $.ajax({
@@ -63,6 +71,13 @@ $(document).ready(function() {
                 $('.' + product_id + '-to-remove-fav-class').remove()
             }
         }
+        $('.' + product_id + '-to-hide-like').attr('hidden', true);
+        $('.' + product_id + '-notific-like').attr('hidden', false);
+        var interval = setInterval(function() {
+            $('.' + product_id + '-to-hide-like').attr('hidden', false);
+            $('.' + product_id + '-notific-like').attr('hidden', true);
+            clearInterval(interval);
+        }, 1500);
         data["csrfmiddlewaretoken"] = csrf_token;
         data['is_delete'] = is_delete;
         console.log(data);

@@ -22,13 +22,14 @@
                 </div>
                 <div id="cat-prod-right-right">
                   <div id="cat-btn-cont">
-                    <button type="button" class="btn btn-secondary to-order-butt"
+                    <button type="button" class="btn btn-secondary to-order-butt {{ product.id }}-to-hide-btn"
                               data-product_id = "{{ product.id }}"
                               data-is_delete = "false"
                               data-loc = "main"
                               data-product_count="{{ count }}"
                               data-product_price="{{ product.price }}"
                       >Добавить</button>
+                    <button hidden disabled class="btn btn-success notific-btn {{ product.id }}-notific-btn">Успешно</button>
                     <form class="product-stuff-cont" id="cat-prod-buttons" action="{% url 'update_order' %}">
                     {% csrf_token %}
                     <button class="btn btn-secondary to-order-butt" id="fav-del-butt"

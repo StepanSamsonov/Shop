@@ -25,20 +25,22 @@
               {% csrf_token %}
               <input class="form-control to-order-count {{ product.id }}-product-input" type="number" id="count-of-best-product"
                      min="0" max="1000000" value="1" placeholder="0">
-              <button class="btn btn-secondary to-order-butt" id="main-add-order-btn"
+              <button class="btn btn-secondary to-order-butt {{ product.id }}-to-hide-btn" id="main-add-order-btn"
                 data-product_id = "{{ product.id }}"
                 data-is_delete = "false"
                 data-loc = "main"
               >Добавить</button>
+              <button hidden disabled class="btn btn-success notific-main-btn notific-btn {{ product.id }}-notific-btn">Успешно</button>
             </form>
             <form class="product-liked-form" action="{% url 'update_favorites' %}">
               {% csrf_token %}
-              <button class="btn btn-secondary like-butt" id="like-butt"
+              <button class="btn btn-secondary like-butt {{ product.id }}-to-hide-like" id="like-butt"
               {% if not is_login %} disabled {% endif %}
                       data-product_id = "{{ product.id }}"
                       data-is_delete="false"
                       data-loc="main"
               >&#10084;</button>
+              <button hidden disabled class="btn notific-like {{ product.id }}-notific-like">&#10084;</button>
             </form>
           </div>
         </div>
