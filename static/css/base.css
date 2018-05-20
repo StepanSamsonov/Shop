@@ -123,8 +123,11 @@ footer {
 /*}*/
 #count-and-to-order {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
+}
+#main-add-order-btn {
+    margin-left: 19%;
 }
 #count-and-to-order input {
     width: 60px;
@@ -272,6 +275,16 @@ footer {
     display: flex;
     flex-direction: column;
 }
+#cat-btn-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+#cat-btn-cont button {
+    color: white;
+}
+
 #cat-prod-buttons {
     display: flex;
     flex-direction: row;
@@ -458,4 +471,8 @@ footer {
 }
 #to-checkout-order-butt {
     width: 50%;
+}
+#order-total-price {
+    display: flex;
+    justify-content: flex-end;
 }

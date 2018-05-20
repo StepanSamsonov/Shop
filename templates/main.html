@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
 {% block content %}
   <div id="best-products-title">
@@ -20,8 +19,8 @@
             <h3 id="best-product-price">{{ product.price }} &#8381</h3>
             <p id="best-price-per-one">{{ product.price_per_some }}</p>
           </div>
+          <div class="label-input-controlled">Количество:</div>
           <div id="count-and-to-order">
-            <div class="label-input-controlled">Количество:</div>
             <form id="main-input-butt" class="product-stuff-cont" action="{% url 'update_order' %}">
               {% csrf_token %}
               <input class="form-control to-order-count {{ product.id }}-product-input" type="number" id="count-of-best-product"

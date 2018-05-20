@@ -48,9 +48,12 @@ def order(request, user_name):
 
     new_data = []
     order_dict = dict()
+    total_order_price = 0
     for id_prod in data_d:
         try:
-            order_dict[Product.objects.get(id=id_prod)] = data_d[id_prod]
+            loc_prod = Product.objects.get(id=id_prod)
+            order_dict[loc_prod] = data_d[id_prod]
+            total_order_price += data_d[id_prod]*loc_prod.price
         except:
             del data_d[id_prod]
 
