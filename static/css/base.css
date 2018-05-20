@@ -472,3 +472,8 @@ footer {
     display: flex;
     justify-content: flex-end;
 }
+
+/*other*/
+#zero-found {
+    height: 100px;
+}

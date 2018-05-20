@@ -34,6 +34,8 @@ def favorites(request, user_name):
         ids = list(map(int, ids.split(' ')))
     else:
         ids = []
+
+    len_user_data = len(ids)
     new_ids = []
     favorite_products = []
     for id_prod in ids:

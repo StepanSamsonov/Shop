@@ -44,6 +44,7 @@ def order(request, user_name):
 
     data = UserData.objects.get(owner_name=user_name).order_data
     data_d = str_to_dict(data)
+    len_order_data = len(data_d)
     correct_order = len(data_d) > 0
 
     new_data = []

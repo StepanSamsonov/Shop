@@ -4,56 +4,62 @@
 {% block content %}
   <div id="cat-container">
     <h2>{{ cat_name }}</h2>
-    <div>Найдено товаров: {{ len_prods }}</div>
-    <ul class="list-group">
-      {% for product in prods %}
-        <li class="list-group-item">
-          <div id="cat-prod-container">
-            <div id="cat-prod-left">
-              <a href="{% url 'product' product.id %}">
-                <img src="../../static/media/{{ product.image }}" id="best-product-image">
-              </a>
-              <h5>{{ product.name }}</h5>
-            </div>
-            <div id="cat-prod-right">
-              <div id="cat-prod-right-left">
-                <h3 id="best-product-price">{{ product.price }} &#8381</h3>
-                <div id="best-price-per-one">{{ product.price_per_some }}</div>
+    {% if len_prods %}
+      <div>Найдено товаров: {{ len_prods }}</div>
+      <ul class="list-group">
+        {% for product in prods %}
+          <li class="list-group-item">
+            <div id="cat-prod-container">
+              <div id="cat-prod-left">
+                <a href="{% url 'product' product.id %}">
+                  <img src="../../static/media/{{ product.image }}" id="best-product-image">
+                </a>
+                <h5>{{ product.name }}</h5>
               </div>
-              <div id="cat-prod-right-right">
-                <div id="cat-btn-cont">
-                  <button type="button" class="btn btn-secondary to-order-butt"
-                            data-product_id = "{{ product.id }}"
-                            data-is_delete = "false"
-                            data-loc = "main"
-                    >Добавить</button>
-                   <form class="product-liked-form" action="{% url 'update_favorites' %}">
-                    {% csrf_token %}
-                    <button class="btn btn-secondary like-butt" id="like-butt"
-                    {% if not is_login %} disabled {% endif %}
-                            data-product_id = "{{ product.id }}"
-                            data-is_delete="false"
-                            data-loc="main"
-                    >&#10084;</button>
-                  </form>
+              <div id="cat-prod-right">
+                <div id="cat-prod-right-left">
+                  <h3 id="best-product-price">{{ product.price }} &#8381</h3>
+                  <div id="best-price-per-one">{{ product.price_per_some }}</div>
                 </div>
-                <form id="cat-prod-form" class="product-stuff-cont" action="{% url 'update_order' %}">
-                  {% csrf_token %}
-                  <div class="label-input-controlled">Количество:</div>
-                  <input class="form-control {{ product.id }}-product-input" type="number" id="count-of-best-product"
-                         min="0" max="1000000" value="1" placeholder="0">
-                </form>
-                {% if product.is_active%}
-                  <div>В наличии</div>
-                {% else %}
-                  <div>Нет в наличии</div>
-                {% endif %}
+                <div id="cat-prod-right-right">
+                  <div id="cat-btn-cont">
+                    <button type="button" class="btn btn-secondary to-order-butt"
+                              data-product_id = "{{ product.id }}"
+                              data-is_delete = "false"
+                              data-loc = "main"
+                      >Добавить</button>
+                     <form class="product-liked-form" action="{% url 'update_favorites' %}">
+                      {% csrf_token %}
+                      <button class="btn btn-secondary like-butt" id="like-butt"
+                      {% if not is_login %} disabled {% endif %}
+                              data-product_id = "{{ product.id }}"
+                              data-is_delete="false"
+                              data-loc="main"
+                      >&#10084;</button>
+                    </form>
+                  </div>
+                  <form id="cat-prod-form" class="product-stuff-cont" action="{% url 'update_order' %}">
+                    {% csrf_token %}
+                    <div class="label-input-controlled">Количество:</div>
+                    <input class="form-control {{ product.id }}-product-input" type="number" id="count-of-best-product"
+                           min="0" max="1000000" value="1" placeholder="0">
+                  </form>
+                  {% if product.is_active%}
+                    <div>В наличии</div>
+                  {% else %}
+                    <div>Нет в наличии</div>
+                  {% endif %}
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div id="zero-found">
+        <p>Ничего не найдено</p>
+      </div>
+    {% endif %}
   </div>
   <div id="cat-vacuum"></div>
 {% endblock %}
