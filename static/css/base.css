@@ -480,3 +480,54 @@ footer {
 #zero-found {
     height: 100px;
 }
+
+/*checkout*/
+#checkout-form {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#checkout-text-cont {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+#checkout-input-cont {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+#checkout-input-cont textarea {
+    height: 100px;
+}
+#checkout-butt-cont {
+    display: flex;
+    justify-content: center;
+}
+#checkout-butt {
+    width: 30%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/*success*/
+#success-main-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#success-btn-cont {
+    display: flex;
+    justify-content: center;
+}
+#success-btn-cont button {
+    width: 100%;
+}
+#success-btn-cont a {
+    width: 40%;
+}

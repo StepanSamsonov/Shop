@@ -71,6 +71,13 @@ def checkout(request):
     is_login = request.user.is_authenticated()
     user_name = request.user.username
 
+    user_data = UserData.objects.get(owner_name=user_name)
+    product_d = str_to_dict(user_data.order_data)
+    total_order_price = 0
+    for id_prod in product_d:
+        loc_prod = Product.objects.get(id=id_prod)
+        total_order_price += product_d[id_prod]*loc_prod.price
+
     if request.method == 'POST':
         checkout_form = CheckoutForm(request.POST)
         if checkout_form.is_valid():
@@ -78,11 +85,8 @@ def checkout(request):
             comments = checkout_form.cleaned_data['customer_comments']
             user = request.user
             customer_name = user.first_name + ' ' + user.last_name
-            user_data = UserData.objects.get(owner_name=user_name)
             phone_number = user_data.phone_number
             email = user.email
-            product_d = str_to_dict(user_data.order_data)
-
             order_status = OrderStatus.objects.get(name='Новый')
             new_order = Order(customer_name=customer_name, customer_email=email, customer_phone=phone_number,
                           customer_address=address, comments=comments, status=order_status)

@@ -2,9 +2,11 @@
 {% load static %}
 
 {% block content %}
-  <div>
+  <div id="success-main-cont" class="alert alert-success">
     <h2>Ваш заказ успешно принят</h2>
-    <h5>Скоро с вами свяжется наш сотрудник</h5>
-    <a href="{% url 'main' %}"><button>На главную</button></a>
+    <h5>В ближайшее время с вами свяжется наш сотрудник</h5>
+    <div id="success-btn-cont">
+      <a href="{% url 'main' %}"><button class="btn btn-outline-success">На главную</button></a>
+    </div>
   </div>
 {% endblock %}

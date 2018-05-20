@@ -59,10 +59,10 @@
       </div>
     {% endif %}
       <div id="order-total-price">
-        <h3>Всего: {{ total_order_price }} &#8381</h3>
+        <h3>Всего: {{ total_order_price }} &#8381;</h3>
       </div>
       <div id="to-checkout-cont">
-        <a href="{% url 'checkout' %}" id="to-checkout-order-butt"><button class="btn btn-primary"
+        <a href="{% url 'checkout' %}" id="to-checkout-order-butt"><button class="btn btn-success"
         {% if not correct_order %}disabled{% endif %}>Оформить заказ</button></a>
       </div>
   </div>
