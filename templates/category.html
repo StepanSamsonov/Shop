@@ -21,15 +21,28 @@
                 <div id="best-price-per-one">{{ product.price_per_some }}</div>
               </div>
               <div id="cat-prod-right-right">
-                <div id="cat-prod-buttons">
-                  <button type="button" class="btn btn-secondary">В корзину</button>
-                  <button type="button" class="btn btn-secondary" id="like-butt"
-                  {% if not is_login %}disabled{% endif %}>&#10084;</button>
+                <div id="cat-btn-cont">
+                  <button type="button" class="btn btn-secondary to-order-butt"
+                            data-product_id = "{{ product.id }}"
+                            data-is_delete = "false"
+                            data-loc = "main"
+                    >Добавить</button>
+                   <form class="product-liked-form" action="{% url 'update_favorites' %}">
+                    {% csrf_token %}
+                    <button class="btn btn-secondary like-butt" id="like-butt"
+                    {% if not is_login %} disabled {% endif %}
+                            data-product_id = "{{ product.id }}"
+                            data-is_delete="false"
+                            data-loc="main"
+                    >&#10084;</button>
+                  </form>
                 </div>
-                <div id="cat-prod-form">
+                <form id="cat-prod-form" class="product-stuff-cont" action="{% url 'update_order' %}">
+                  {% csrf_token %}
                   <div class="label-input-controlled">Количество:</div>
-                  <input class="form-control" type="number" id="count-of-best-product" min="0" max="1000000" value="1" placeholder="0">
-                </div>
+                  <input class="form-control {{ product.id }}-product-input" type="number" id="count-of-best-product"
+                         min="0" max="1000000" value="1" placeholder="0">
+                </form>
                 {% if product.is_active%}
                   <div>В наличии</div>
                 {% else %}

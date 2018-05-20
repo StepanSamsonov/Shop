@@ -281,9 +281,6 @@ footer {
     justify-content: space-between;
     margin-top: 5px;
 }
-#cat-btn-cont button {
-    color: white;
-}
 
 #cat-prod-buttons {
     display: flex;
@@ -458,8 +455,7 @@ footer {
 
 /*favorite*/
 #fav-del-butt {
-    color: black;
-    font-size: x-large;
+    color: white;
 }
 
 /*order*/

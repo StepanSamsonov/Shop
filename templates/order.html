@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-      <div id="cat-container">
+    <div id="cat-container">
     <h2>Заказ</h2>
     <ul class="list-group">
       {% for product, count in order_dict.items %}
@@ -20,12 +20,6 @@
                 <div id="best-price-per-one">{{ product.price_per_some }}</div>
               </div>
               <div id="cat-prod-right-right">
-                <form id="cat-prod-form" class="product-stuff-cont" action="{% url 'update_order' %}">
-                  {% csrf_token %}
-                  <div class="label-input-controlled">Количество:</div>
-                  <input class="form-control {{ product.id }}-product-input" type="number" id="count-of-best-product"
-                         min="0" max="1000000" value="{{ count }}" placeholder="0">
-                </form>
                 <div id="cat-btn-cont">
                   <button type="button" class="btn btn-secondary to-order-butt"
                             data-product_id = "{{ product.id }}"
@@ -41,6 +35,12 @@
                     >&#215;</button>
                   </form>
                 </div>
+                <form id="cat-prod-form" class="product-stuff-cont" action="{% url 'update_order' %}">
+                  {% csrf_token %}
+                  <div class="label-input-controlled">Количество:</div>
+                  <input class="form-control {{ product.id }}-product-input" type="number" id="count-of-best-product"
+                         min="0" max="1000000" value="{{ count }}" placeholder="0">
+                </form>
                   {% if product.is_active%}
                   <div>В наличии</div>
                 {% else %}
