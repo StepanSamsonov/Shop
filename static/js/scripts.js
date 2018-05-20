@@ -2,7 +2,7 @@ $(document).ready(function() {
     var form_order = $('#product-stuff-cont');
     var form_liked = $('#product-liked-form');
 
-    function update_order(product_id, count, is_delete, loc) {
+    function update_order(product_id, count, is_delete, loc, product_count, product_price) {
         var data = {};
         data.product_id = product_id;
         data.count = count;
@@ -13,9 +13,15 @@ $(document).ready(function() {
         if (loc === 'main') {
             var csrf_token = $('.product-stuff-cont [name="csrfmiddlewaretoken"]').val();
             var url = '/update_order';
-            if (is_delete) {
-                $('.' + product_id + '-to-remove-order-class').remove()
+            if (is_delete || count === '0') {
+                $('.' + product_id + '-to-remove-order-class').remove();
             }
+            var price = parseFloat($('#order-total-price div').text());
+            if (product_count !== count.toString()) {
+                price -= parseFloat(product_count)*parseFloat(product_price);
+                price += parseFloat(count) * parseFloat(product_price);
+            }
+            $('#order-total-price div').text(price.toString() + '.00');
         }
         data['is_delete'] = is_delete;
         data["csrfmiddlewaretoken"] = csrf_token;
@@ -97,7 +103,10 @@ $(document).ready(function() {
         var count = $('.'+product_id+'-product-input').val();
         var is_delete = $(this).data("is_delete");
         var loc = $(this).data("loc");
-        update_order(product_id, count, is_delete, loc);
+        var product_count = $(this).data("product_count");
+        var product_price = $(this).data("product_price");
+        $(this).data("product_count", count.toString());
+        update_order(product_id, count, is_delete, loc, product_count, product_price);
     });
 
 });

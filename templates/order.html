@@ -26,13 +26,17 @@
                               data-product_id = "{{ product.id }}"
                               data-is_delete = "false"
                               data-loc = "main"
+                              data-product_count="{{ count }}"
+                              data-product_price="{{ product.price }}"
                       >Добавить</button>
                     <form class="product-stuff-cont" id="cat-prod-buttons" action="{% url 'update_order' %}">
                     {% csrf_token %}
                     <button class="btn btn-secondary to-order-butt" id="fav-del-butt"
-                              data-product_id = "{{ product.id }}"
+                              data-product_id="{{ product.id }}"
                               data-is_delete="true"
                               data-loc="main"
+                              data-product_count="{{ count }}"
+                              data-product_price="{{ product.price }}"
                       >&#215;</button>
                     </form>
                   </div>
@@ -59,7 +63,7 @@
       </div>
     {% endif %}
       <div id="order-total-price">
-        <h3>Всего: {{ total_order_price }} &#8381;</h3>
+        <h3>Всего:&nbsp;<div>{{ total_order_price }}</div> &#8381;</h3>
       </div>
       <div id="to-checkout-cont">
         <a href="{% url 'checkout' %}" id="to-checkout-order-butt"><button class="btn btn-success"

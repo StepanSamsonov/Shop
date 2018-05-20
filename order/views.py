@@ -28,7 +28,7 @@ def update_order(request):
     user_data = UserData.objects.get(owner_name=user_name).order_data
     user_data_d = str_to_dict(user_data)
 
-    if post['is_delete'] == 'false':
+    if post['is_delete'] == 'false' and int(post['count']):
         user_data_d[int(post['product_id'])] = int(post['count'])
     else:
         del user_data_d[int(post['product_id'])]

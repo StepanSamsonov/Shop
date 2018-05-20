@@ -475,6 +475,11 @@ footer {
     display: flex;
     justify-content: flex-end;
 }
+#order-total-price h3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
 
 /*other*/
 #zero-found {
