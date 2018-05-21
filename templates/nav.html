@@ -9,7 +9,8 @@
     <div class="collapse navbar-collapse" id="navbarcontent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          style="color: white">
             Категории
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -17,9 +18,9 @@
           </div>
         </li>
       </ul>
-      <a href="{% url 'favorites' %}"><button type="button" id="nav-liked-button" class="btn btn-outline-secondary"
+      <a href="{% url 'favorites' %}"><button type="button" id="nav-liked-button" class="btn btn-outline-light"
       {% if not is_login %}disabled{% endif %}>Избранное</button></a>
-      <a href="{% url 'order' %}"><button id="order-butt" type="button" class="btn btn-outline-secondary" href="#">Корзина</button></a>
+      <a href="{% url 'order' %}"><button id="order-butt" type="button" class="btn btn-outline-light" href="#">Корзина</button></a>
       <form id="search-form" action="/search/" method="post">
         {% csrf_token %}
         <input class="form-control" type="text" name="text_search" placeholder="Search" aria-label="Search" value="{{ text_search }}">

@@ -13,10 +13,19 @@ $(document).ready(function() {
         if (loc === 'main') {
             var csrf_token = $('.product-stuff-cont [name="csrfmiddlewaretoken"]').val();
             var url = '/update_order';
-            if (is_delete || count === '0') {
-                $('.' + product_id + '-to-remove-order-class').remove();
-            }
             var price = parseFloat($('#order-total-price div').text());
+            if (is_delete || count === '0') {
+                price -= parseFloat(product_count)*parseFloat(product_price);
+                $('.' + product_id + '-to-remove-order-class').remove();
+                var len = $('#cat-container').attr('data-len');
+                $('#cat-container').attr('data-len', len-1);
+                if (len === '1') {
+                    $('#order-to-insert').append('      <div id="zero-found">\n' +
+                                               '        <p>Ничего не найдено</p>\n' +
+                                               '      </div>');
+                    $('#to-checkout-order-butt button').attr('disabled', true);
+                }
+            }
             if (product_count !== count.toString()) {
                 price -= parseFloat(product_count)*parseFloat(product_price);
                 price += parseFloat(count) * parseFloat(product_price);
@@ -68,7 +77,14 @@ $(document).ready(function() {
             var csrf_token = $('.product-liked-form [name="csrfmiddlewaretoken"]').val();
             var url = '/update_favorites';
             if (is_delete) {
-                $('.' + product_id + '-to-remove-fav-class').remove()
+                $('.' + product_id + '-to-remove-fav-class').remove();
+                var len = $('#cat-container').attr('data-len');
+                $('#cat-container').attr('data-len', len-1);
+                if (len === '1') {
+                    $('#cat-container').append('      <div id="zero-found">\n' +
+                                               '        <p>Ничего не найдено</p>\n' +
+                                               '      </div>');
+                }
             }
         }
         $('.' + product_id + '-to-hide-like').attr('hidden', true);

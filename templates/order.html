@@ -2,9 +2,12 @@
 {% load static %}
 
 {% block content %}
-    <div id="cat-container">
+    <div id="cat-container"
+         data-len="{{ len_order_data }}"
+    >
     <h2>Заказ</h2>
     {% if len_order_data %}
+      <div id="order-to-insert"></div>
       <ul class="list-group">
         {% for product, count in order_dict.items %}
           <li class="list-group-item {{ product.id }}-to-remove-order-class">
@@ -13,7 +16,7 @@
                 <a href="{% url 'product' product.id %}">
                   <img src="../../static/media/{{ product.image }}" id="best-product-image">
                 </a>
-                <h5>{{ product.name }}</h5>
+                <h5>{{ product.name|truncatechars_html:25 }}</h5>
               </div>
               <div id="cat-prod-right">
                 <div id="cat-prod-right-left">

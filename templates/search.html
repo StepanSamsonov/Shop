@@ -14,7 +14,7 @@
                 <a href="{% url 'product' product.id %}">
                   <img src="../../static/media/{{ product.image }}" id="best-product-image">
                 </a>
-                <h5>{{ product.name }}</h5>
+                <h5>{{ product.name|truncatechars_html:25 }}</h5>
               </div>
               <div id="cat-prod-right">
                 <div id="cat-prod-right-left">
