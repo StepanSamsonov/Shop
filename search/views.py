@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from product.models import Product
+from product.models import Product, UserData
 from search.forms import SearchForm, FilterForm
 import sys
 
@@ -7,6 +7,17 @@ import sys
 def search(request, filter_categories='Все'):
     is_login = request.user.is_authenticated()
     user_name = request.user.username
+
+    session_key = request.session.session_key
+    if not session_key:
+        request.session.cycle_key()
+
+    if not is_login:
+        user_name = session_key
+        try:
+            UserData.objects.get(owner_name=user_name)
+        except:
+            UserData.objects.create(owner_name=user_name, liked_data='', order_data='')
 
     text_search = ''
     filter_price_from = 0

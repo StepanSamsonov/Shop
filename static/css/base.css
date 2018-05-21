@@ -518,6 +518,10 @@ footer {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+#checkout-new-profile {
+    margin-left: 20px;
+    margin-right: 20px;
+}
 
 /*success*/
 #success-main-cont {

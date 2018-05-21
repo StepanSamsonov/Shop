@@ -57,7 +57,7 @@ class UserData(models.Model):
     updated = models.TimeField(auto_now_add=False, auto_now=True)
 
     def __str__(self):
-        return 'Дополнительно для ' + self.owner_name
+        return 'Дополнительно для ' + str(self.owner_name)
 
     class Meta:
         verbose_name = 'Дополнительно'

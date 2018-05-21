@@ -8,6 +8,23 @@
       <h3>Оформление заказа</h3>
       <h4>К оплате: {{ total_order_price }} &#8381;</h4>
     </div>
+    
+    {% if not is_login %}
+      <div id="checkout-new-profile">
+        <label for="checkout-form-name">Имя</label>
+        <input id="checkout-form-name" class="form-control" type="text" placeholder="Имя" name="customer_first_name">
+
+        <label for="checkout-form-surname">Фамилия</label>
+        <input id="checkout-form-surname" class="form-control" type="text" placeholder="Фамилия" name="customer_second_name">
+
+        <label for="checkout-form-email">Почта</label>
+        <input id="checkout-form-email" class="form-control" type="text" placeholder="Email" name="customer_email">
+
+        <label for="checkout-form-number">Телефон</label>
+        <input id="checkout-form-number" class="form-control" type="number" placeholder="+7 XXX XXXX XX XX" name="customer_number">
+      </div>
+    {% endif %}
+    
     <div id="checkout-input-cont">
       <label for="checkout-form-address">Адрес доставки</label>
       <input id="checkout-form-address" class="form-control" type="text" placeholder="Адрес" name="customer_address">

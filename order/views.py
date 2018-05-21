@@ -25,6 +25,20 @@ def dict_to_str(d):
 def update_order(request):
     post = request.POST.dict()
     user_name = request.user.username
+    is_login = request.user.is_authenticated()
+
+    session_key = request.session.session_key
+    if not session_key:
+        request.session.cycle_key()
+
+    if not is_login and session_key:
+        user_name = session_key
+        try:
+            kek = UserData.objects.get(owner_name=user_name)
+            print(kek)
+        except:
+            UserData.objects.create(owner_name=user_name, liked_data='', order_data='')
+
     user_data = UserData.objects.get(owner_name=user_name).order_data
     user_data_d = str_to_dict(user_data)
 
@@ -43,6 +57,17 @@ def update_order(request):
 def order(request):
     is_login = request.user.is_authenticated()
     user_name = request.user.username
+
+    session_key = request.session.session_key
+    if not session_key:
+        request.session.cycle_key()
+
+    if not is_login:
+        user_name = session_key
+        try:
+            UserData.objects.get(owner_name=user_name)
+        except:
+            UserData.objects.create(owner_name=user_name, liked_data='', order_data='')
 
     data = UserData.objects.get(owner_name=user_name).order_data
     data_d = str_to_dict(data)
@@ -71,6 +96,17 @@ def checkout(request):
     is_login = request.user.is_authenticated()
     user_name = request.user.username
 
+    session_key = request.session.session_key
+    if not session_key:
+        request.session.cycle_key()
+
+    if not is_login:
+        user_name = session_key
+        try:
+            UserData.objects.get(owner_name=user_name)
+        except:
+            UserData.objects.create(owner_name=user_name, liked_data='', order_data='')
+
     user_data = UserData.objects.get(owner_name=user_name)
     product_d = str_to_dict(user_data.order_data)
     total_order_price = 0
@@ -83,10 +119,19 @@ def checkout(request):
         if checkout_form.is_valid():
             address = checkout_form.cleaned_data['customer_address']
             comments = checkout_form.cleaned_data['customer_comments']
-            user = request.user
-            customer_name = user.first_name + ' ' + user.last_name
-            phone_number = user_data.phone_number
-            email = user.email
+
+            if is_login:
+                user = request.user
+                customer_name = user.first_name + ' ' + user.last_name
+                email = user.email
+                phone_number = user_data.phone_number
+            else:
+                customer_first_name = checkout_form.cleaned_data['customer_first_name']
+                customer_second_name = checkout_form.cleaned_data['customer_second_name']
+                customer_name = customer_first_name + ' ' + customer_second_name
+                email = checkout_form.cleaned_data['customer_email']
+                phone_number = checkout_form.cleaned_data['customer_number']
+
             order_status = OrderStatus.objects.get(name='Новый')
             new_order = Order(customer_name=customer_name, customer_email=email, customer_phone=phone_number,
                           customer_address=address, comments=comments, status=order_status)
