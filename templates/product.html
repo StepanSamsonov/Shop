@@ -73,4 +73,44 @@
       </div>
     </div>
   </div>
+  <h3 id="recommend-title">Вам также могут понравиться:</h3>
+  <div id="product-recommend-cont">
+    {% for product in recommended_products %}
+      <div class="card" id="recommend-best-product">
+        <a href="{% url 'product' product.id %}">
+          <img src="../../static/media/{{ product.image }}" id="recommend-product-image">
+        </a>
+        <div class="card-body">
+            {{ product.name|truncatechars_html:15 }}
+          <div id="recommend-price-data">
+            <h5 id="recommend-product-price">{{ product.price }} &#8381</h5>
+          </div>
+          <form id="cat-prod-form" class="product-stuff-cont" action="{% url 'update_order' %}">
+            {% csrf_token %}
+            <div class="label-input-controlled">Количество:</div>
+            <input class="form-control {{ product.id }}-product-input" type="number" id="count-of-best-product"
+                   min="0" max="1000000" value="1" placeholder="0">
+          </form>
+          <div id="recommend-count-and-to-order">
+            <button type="button" class="btn btn-secondary to-order-butt {{ product.id }}-to-hide-btn"
+                      data-product_id = "{{ product.id }}"
+                      data-is_delete = "false"
+                      data-loc = "main"
+              >Добавить</button>
+            <button hidden disabled class="btn btn-success notific-btn {{ product.id }}-notific-btn">Успешно</button>
+            <form class="product-liked-form" action="{% url 'update_favorites' %}">
+              {% csrf_token %}
+              <button class="btn btn-secondary like-butt {{ product.id }}-to-hide-like" id="like-butt"
+              {% if not is_login %} disabled {% endif %}
+                      data-product_id = "{{ product.id }}"
+                      data-is_delete="false"
+                      data-loc="main"
+              >&#10084;</button>
+              <button hidden disabled class="btn notific-like {{ product.id }}-notific-like">&#10084;</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}
