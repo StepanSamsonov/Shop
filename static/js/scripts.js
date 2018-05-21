@@ -93,7 +93,7 @@ $(document).ready(function() {
             $('.' + product_id + '-to-hide-like').attr('hidden', false);
             $('.' + product_id + '-notific-like').attr('hidden', true);
             clearInterval(interval);
-        }, 1500);
+        }, 500);
         data["csrfmiddlewaretoken"] = csrf_token;
         data['is_delete'] = is_delete;
         console.log(data);

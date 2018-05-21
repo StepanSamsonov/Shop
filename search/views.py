@@ -4,7 +4,11 @@ from search.forms import SearchForm, FilterForm
 import sys
 
 
-def search(request, filter_categories='Все'):
+def search(request):
+    filter_categories = 'Все'
+    filter_is_exist = 'Все'
+    filter_per_some = 'Все'
+
     is_login = request.user.is_authenticated()
     user_name = request.user.username
 
@@ -36,6 +40,7 @@ def search(request, filter_categories='Все'):
             filter_form = FilterForm(request.POST)
             filter_form.fields['filter_sort_by'].label = 'filterRadioDown'
             if filter_form.is_valid():
+                request.session['filter_form_data'] = filter_form.cleaned_data
                 filter_sort_by = request.POST.get('filterRadio')
                 filter_per_some = request.POST.get('filter_per_some')
                 filter_price_from = filter_form.cleaned_data['filter_price_from']
