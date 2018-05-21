@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login
 def login_user(request):
     is_login = request.user.is_authenticated()
     user_name = request.user.username
+    is_error = False
 
     if request.method == 'POST':
         signup_form = LogInForm(request.POST)
@@ -19,10 +20,10 @@ def login_user(request):
                 login(request, user)
                 return HttpResponseRedirect('/')
             else:
-                return HttpResponseRedirect('/login')
+                is_error = True
 
         else:
-            return HttpResponseRedirect('/login')
+            is_error = True
 
     else:
         signup_form = LogInForm()

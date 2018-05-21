@@ -22,6 +22,28 @@ def dict_to_str(d):
     return ' '.join(s)
 
 
+def check_number(s):
+    if not s:
+        return ''
+    if s[0] == '+':
+        if s[1:].isdigit() and len(s) == 12:
+            return s
+        else:
+            return ''
+    else:
+        if s.isdigit() and len(s) == 11:
+            return s
+        else:
+            return ''
+
+
+def check_email(s):
+    if s.find('@') == s.rfind('@') != -1 and '.' in s:
+        return s
+    else:
+        return ''
+
+
 def update_order(request):
     post = request.POST.dict()
     user_name = request.user.username
@@ -34,8 +56,7 @@ def update_order(request):
     if not is_login and session_key:
         user_name = session_key
         try:
-            kek = UserData.objects.get(owner_name=user_name)
-            print(kek)
+            UserData.objects.get(owner_name=user_name)
         except:
             UserData.objects.create(owner_name=user_name, liked_data='', order_data='')
 
@@ -95,6 +116,14 @@ def order(request):
 def checkout(request):
     is_login = request.user.is_authenticated()
     user_name = request.user.username
+    is_error = []
+
+    address = ''
+    comments = ''
+    customer_first_name = ''
+    customer_second_name = ''
+    email = ''
+    phone_number = ''
 
     session_key = request.session.session_key
     if not session_key:
@@ -130,22 +159,29 @@ def checkout(request):
                 customer_second_name = checkout_form.cleaned_data['customer_second_name']
                 customer_name = customer_first_name + ' ' + customer_second_name
                 email = checkout_form.cleaned_data['customer_email']
+                email = check_email(email)
                 phone_number = checkout_form.cleaned_data['customer_number']
+                phone_number = check_number(phone_number)
+                if not customer_first_name:
+                    is_error.append('customer_first_name')
+                if not customer_second_name:
+                    is_error.append('customer_second_name')
+                if not email and not phone_number:
+                    is_error.append('customer_contacts')
 
-            order_status = OrderStatus.objects.get(name='Новый')
-            new_order = Order(customer_name=customer_name, customer_email=email, customer_phone=phone_number,
-                          customer_address=address, comments=comments, status=order_status)
-            new_order.save()
+            if not len(is_error):
+                order_status = OrderStatus.objects.get(name='Новый')
+                new_order = Order(customer_name=customer_name, customer_email=email, customer_phone=phone_number,
+                              customer_address=address, comments=comments, status=order_status)
+                new_order.save()
 
-            for prod_id in product_d:
-                product = Product.objects.get(id=prod_id)
-                product_in_order = ProductInOrder(order=new_order, product=product, price_per_one=product.price,
-                                                  number=product_d[prod_id])
-                product_in_order.save()
+                for prod_id in product_d:
+                    product = Product.objects.get(id=prod_id)
+                    product_in_order = ProductInOrder(order=new_order, product=product, price_per_one=product.price,
+                                                      number=product_d[prod_id])
+                    product_in_order.save()
 
-            return HttpResponseRedirect('/success')
-        else:
-            return HttpResponseRedirect('/checkout')
+                return HttpResponseRedirect('/success')
 
     return render(request, 'checkout.html', locals())
 

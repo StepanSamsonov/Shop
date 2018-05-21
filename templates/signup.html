@@ -5,29 +5,62 @@
   <form action="/signup/" method="post" id="signup-form" class="card">
     <h4>Регистрация</h4>
     {% csrf_token %}
-    <label for="signup-form-name">Логин</label>
-    <input id="signup-form-name" class="form-control" type="text" placeholder="Логин" name="user_login">
+    <div {% if 'user_login' in is_error or 'user_login_exist' in is_error%} class="alert alert-danger" {% endif %}>
+      <label for="signup-form-name">Логин</label>
+      <input id="signup-form-name" class="form-control" type="text" placeholder="Логин" name="user_login" value="{{ user_login }}">
+      {% if 'user_login' in is_error %}
+        <div>Это поле обязательно к заполнению</div>
+      {% endif %}
+      {% if 'user_login_exist' in is_error %}
+        <div>Пользователь с таким именем уже существует</div>
+      {% endif %}
+    </div>
 
+    <div {% if 'user_name' in is_error %} class="alert alert-danger" {% endif %}>
     <label for="signup-form-name">Имя</label>
-    <input id="signup-form-name" class="form-control" type="text" placeholder="Имя" name="user_name">
+    <input id="signup-form-name" class="form-control" type="text" placeholder="Имя" name="user_name" value="{{ user_name }}">
+      {% if 'user_name' in is_error %}
+        <div>Это поле обязательно к заполнению</div>
+      {% endif %}
+    </div>
 
-    <label for="signup-form-surname">Фамилия</label>
-    <input id="signup-form-surname" class="form-control" type="text" placeholder="Фамилия" name="user_surname">
+    <div {% if 'user_surname' in is_error %} class="alert alert-danger" {% endif %}>
+      <label for="signup-form-surname">Фамилия</label>
+      <input id="signup-form-surname" class="form-control" type="text" placeholder="Фамилия" name="user_surname" value="{{ user_surname }}">
+      {% if 'user_surname' in is_error %}
+        <div>Это поле обязательно к заполнению</div>
+      {% endif %}
+    </div>
 
-    <label for="signup-form-email">Почта</label>
-    <input id="signup-form-email" class="form-control" type="text" placeholder="Email" name="user_email">
+    <div {% if 'user_contacts' in is_error %} class="alert alert-danger" {% endif %}>
+      <label for="signup-form-email">Почта</label>
+      <input id="signup-form-email" class="form-control" type="text" placeholder="Email" name="user_email" value="{{ user_email }}">
 
-    <label for="signup-form-number">Телефон</label>
-    <input id="signup-form-number" class="form-control" type="number" placeholder="+7 XXX XXXX XX XX" name="user_phone_number">
+      <label for="signup-form-number">Телефон</label>
+      <input id="signup-form-number" class="form-control" type="text" placeholder="+7 XXX XXXX XX XX" name="user_phone_number" value="{{ user_phone_number }}">
 
-    <label for="signup-form-password">Пароль</label>
-    <input id="signup-form-password" class="form-control" type="text" placeholder="Пароль" name="user_password">
+      {% if 'user_contacts' in is_error %}
+        <div>Одно из полей обязательно к заполнению</div>
+      {% endif %}
+    </div>
 
-    <label for="signup-form-password-again">Повтор</label>
-    <input id="signup-form-password-again" class="form-control" type="text" placeholder="Пароль" name="user_password_again">
+    <div {% if 'user_passwords' in is_error or 'different_passwords' in is_error %} class="alert alert-danger" {% endif %}>
+      <label for="signup-form-password">Пароль</label>
+      <input id="signup-form-password" class="form-control" type="password" placeholder="Пароль" name="user_password">
+
+      <label for="signup-form-password-again">Повтор</label>
+      <input id="signup-form-password-again" class="form-control" type="password" placeholder="Пароль" name="user_password_again">
+      {% if 'user_passwords' in is_error %}
+        <div>Оба поля обязательны к заполнению</div>
+      {% endif %}
+      {% if 'different_passwords' in is_error %}
+        <div>Пароли должны совпадать</div>
+      {% endif %}
+    </div>
 
     <div id="signup-butt-cont">
-    <input id="signup-butt" class="btn btn-outline-warning" type="submit" value="Зарегистрироваться" name="signup_butt">
+      <input id="signup-butt" class="btn btn-outline-success" type="submit" value="Зарегистрироваться" name="signup_butt">
     </div>
+
   </form>
 {% endblock %}

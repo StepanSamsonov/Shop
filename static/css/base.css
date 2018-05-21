@@ -441,7 +441,8 @@ footer {
 #signup-form label {
     width: 80%;
     margin: auto;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
+    margin-left: 10%;
 }
 #signup-form h4 {
     margin: auto;
@@ -451,6 +452,14 @@ footer {
     margin-top: 20px;
     width: 100%;
     margin-left: 10%;
+}
+#signup-form div div {
+    margin-left: 10%;
+}
+#signup-form div {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
 }
 
 /*login*/
@@ -481,7 +490,12 @@ footer {
     width: 100%;
     margin-left: 10%;
 }
-
+#login-error {
+    margin: auto;
+    text-align: center;
+    width: 60%;
+    margin-top: 20px;
+}
 /*favorite*/
 #fav-del-butt {
     color: white;
@@ -548,6 +562,9 @@ footer {
     margin-left: 20px;
     margin-right: 20px;
 }
+#checkout-new-profile div {
+    margin-top: 10px;
+}
 
 /*success*/
 #success-main-cont {
@@ -558,6 +575,7 @@ footer {
     width: 50%;
     margin-top: 10px;
     margin-bottom: 10px;
+    text-align: center;
 }
 #success-btn-cont {
     display: flex;

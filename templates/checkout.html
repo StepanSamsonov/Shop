@@ -11,27 +11,42 @@
     
     {% if not is_login %}
       <div id="checkout-new-profile">
-        <label for="checkout-form-name">Имя</label>
-        <input id="checkout-form-name" class="form-control" type="text" placeholder="Имя" name="customer_first_name">
+        <div {% if 'customer_first_name' in is_error %} class="alert alert-danger" {% endif %}>
+          <label for="checkout-form-name">Имя</label>
+          <input id="checkout-form-name" class="form-control" type="text" placeholder="Имя" name="customer_first_name" value="{{ customer_first_name }}">
+          {% if 'customer_first_name' in is_error %}
+            <div>Это поле обязательно к заполнению</div>
+          {% endif %}
+        </div>
 
-        <label for="checkout-form-surname">Фамилия</label>
-        <input id="checkout-form-surname" class="form-control" type="text" placeholder="Фамилия" name="customer_second_name">
+        <div {% if 'customer_second_name' in is_error %} class="alert alert-danger" {% endif %}>
+          <label for="checkout-form-surname">Фамилия</label>
+          <input id="checkout-form-surname" class="form-control" type="text" placeholder="Фамилия" name="customer_second_name" value="{{ customer_second_name }}">
+          {% if 'customer_second_name' in is_error %}
+            <div>Это поле обязательно к заполнению</div>
+          {% endif %}
+        </div>
 
-        <label for="checkout-form-email">Почта</label>
-        <input id="checkout-form-email" class="form-control" type="text" placeholder="Email" name="customer_email">
+        <div {% if 'customer_contacts' in is_error %} class="alert alert-danger" {% endif %}>
+          <label for="checkout-form-email">Почта</label>
+          <input id="checkout-form-email" class="form-control" type="text" placeholder="Email" name="customer_email" value="{{ email }}">
 
-        <label for="checkout-form-number">Телефон</label>
-        <input id="checkout-form-number" class="form-control" type="number" placeholder="+7 XXX XXXX XX XX" name="customer_number">
+          <label for="checkout-form-number">Телефон</label>
+          <input id="checkout-form-number" class="form-control" type="tel" placeholder="+7 XXX XXX XX XX" name="customer_number" value="{{ phone_number }}">
+
+          {% if 'customer_contacts' in is_error %}
+            <div>Одно из этих полей обязательно к заполнению</div>
+          {% endif %}
+        </div>
       </div>
     {% endif %}
     
     <div id="checkout-input-cont">
       <label for="checkout-form-address">Адрес доставки</label>
-      <input id="checkout-form-address" class="form-control" type="text" placeholder="Адрес" name="customer_address">
+      <input id="checkout-form-address" class="form-control" type="text" placeholder="Адрес" name="customer_address" value="{{ address }}">
 
       <label for="checkout-form-comment">Комментарии к заказу</label>
-      <textarea id="checkout-form-comment" class="form-control" placeholder="Комментарий" name="customer_comments">
-      </textarea>
+      <textarea id="checkout-form-comment" class="form-control" placeholder="Комментарий" name="customer_comments">{{ comments }}</textarea>
     </div>
 
     <div id="checkout-butt-cont">
