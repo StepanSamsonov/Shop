@@ -24,15 +24,16 @@ def get_recommended(ind):
     popular_ind = [ind for ind in popular_d]
     popular_ind.sort(key=lambda x: popular_d[x])
     popular_ind.reverse()
-    recommends = []
+    recommends = set()
     while len(recommends) < count_of_showed and len(rec_products):
         rand_ind = random.randint(0, len(rec_products)-1)
         new_ind = rec_products[rand_ind]
         del rec_products[rand_ind]
-        recommends.append(Product.objects.get(id=new_ind))
+        recommends.add(Product.objects.get(id=new_ind))
+
     while len(recommends) < count_of_showed and popular_ind:
         new_ind = popular_ind.pop(0)
-        recommends.append(Product.objects.get(id=new_ind))
+        recommends.add(Product.objects.get(id=new_ind))
 
     id_list = [elem.id for elem in Product.objects.all()]
     del id_list[id_list.index(ind)]
@@ -41,8 +42,8 @@ def get_recommended(ind):
         new_ind = id_list[rand_ind]
         del id_list[rand_ind]
         if rand_ind not in recommends:
-            recommends.append(Product.objects.get(id=new_ind))
-    return recommends
+            recommends.add(Product.objects.get(id=new_ind))
+    return list(recommends)
 
 
 def product(request, product_id):

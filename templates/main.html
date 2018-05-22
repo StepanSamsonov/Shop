@@ -12,9 +12,7 @@
           <img src="static/media/{{ product.image }}" id="best-product-image">
         </a>
         <div class="card-body">
-{#          <a href="{% url 'product' product.id %}" id="best-product-name">#}
             {{ product.name|truncatechars_html:25 }}
-{#          </a>#}
           <div id="price-data">
             <h3 id="best-product-price">{{ product.price }} &#8381</h3>
             <p id="best-price-per-one">{{ product.price_per_some }}</p>
