@@ -96,6 +96,10 @@ footer {
     display: flex;
     justify-content: center;
 }
+#footer-price-list a {
+    text-decoration: none;
+    color: white;
+}
 
 /*main page*/
 #best-products {
