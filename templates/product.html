@@ -28,7 +28,8 @@
                       data-is_delete="false"
                       data-loc="product"
               >Добавить</button>
-              <button hidden disabled class="btn btn-success notific-btn {{ product_ex.id }}-notific-btn">Успешно</button>
+              <button hidden disabled class="btn btn-success notific-btn {{ product_ex.id }}-notific-btn"
+              id="product-to-order-butt-hidden">Успешно</button>
             </div>
           </form>
           <form id="product-liked-form" action="{% url 'update_favorites' %}">
